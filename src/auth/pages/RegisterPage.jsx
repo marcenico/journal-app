@@ -1,8 +1,8 @@
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks';
+import { AuthLayout } from '../layout/AuthLayout';
 
 const formData = {
   email: 'mail@example.com',
