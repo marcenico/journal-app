@@ -5,9 +5,9 @@ import { useForm } from '../../hooks';
 import { AuthLayout } from '../layout/AuthLayout';
 
 const formData = {
-  email: 'mail@example.com',
-  password: '123456',
-  displayName: 'John'
+  email: '',
+  password: '',
+  displayName: ''
 };
 
 export const RegisterPage = () => {
@@ -55,7 +55,7 @@ export const RegisterPage = () => {
           </Grid>
 
           <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <Button variant="contained" fullWidth onClick={onSubmit}>
                 Create
               </Button>
