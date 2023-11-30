@@ -16,8 +16,6 @@ export const singInWithGoogle = async () => {
       photoURL,
       uid
     };
-
-    console.log({ displayName, email, photoURL, uid });
   } catch (error) {
     console.log(error);
     return {
