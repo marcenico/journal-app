@@ -14,6 +14,7 @@ export const startGoogleSignIn = () => {
     // Set checking credentials status to true
     dispatch(checkingCredentials());
 
+    // Register user with google
     const result = await singInWithGoogle();
 
     // dispatch logout if result is not ok
@@ -25,10 +26,15 @@ export const startGoogleSignIn = () => {
 
 export const startCreatingUserWithEmailPassword = ({ email, password, displayName }) => {
   return async (dispatch) => {
+    // Set checking credentials status to true
     dispatch(checkingCredentials());
 
-    const result = await registerUserWithEmailPassword({ email, password, displayName });
+    // Register user with email and password
+    const { errorMessage, ok, photoURL, uid } = await registerUserWithEmailPassword({ email, password, displayName });
 
-    console.log({ result });
+    // dispatch logout if result is not ok
+    if (!ok) return dispatch(logout({ errorMessage }));
+
+    dispatch(login({ displayName, email, photoURL, uid }));
   };
 };
