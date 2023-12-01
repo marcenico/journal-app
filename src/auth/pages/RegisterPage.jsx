@@ -1,14 +1,12 @@
 import { Button, Grid, Link, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link as RouterLink } from 'react-router-dom';
 import { useForm } from '../../hooks';
+import { startCreatingUserWithEmailPassword } from '../../store/auth';
 import { AuthLayout } from '../layout/AuthLayout';
 
-const formData = {
-  email: '',
-  password: '',
-  displayName: ''
-};
+const formData = { email: '', password: '', displayName: '' };
 
 const formValidations = {
   displayName: [(value) => value.length >= 1, 'This field is required'],
@@ -17,6 +15,8 @@ const formValidations = {
 };
 
 export const RegisterPage = () => {
+  const dispatch = useDispatch();
+
   const {
     displayName,
     email,
@@ -35,12 +35,14 @@ export const RegisterPage = () => {
     event.preventDefault();
 
     setformSubmitted(true);
+    if (!isFormValid) return;
+
+    dispatch(startCreatingUserWithEmailPassword(formState));
   };
 
   return (
     <AuthLayout title="Register">
       <form>
-        <h1>FormValid {isFormValid ? 'Valid' : 'Invalid'}</h1>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
