@@ -44,7 +44,7 @@ export const RegisterPage = () => {
 
   return (
     <AuthLayout title="Register">
-      <form>
+      <form className="animate__animated animate__fadeIn animate__faster" onSubmit={onSubmit}>
         <Grid container>
           <Grid item xs={12} sx={{ mt: 2 }}>
             <TextField
@@ -91,7 +91,7 @@ export const RegisterPage = () => {
             </Grid>
 
             <Grid item xs={12}>
-              <Button variant="contained" fullWidth onClick={onSubmit} disabled={isAuthenticating}>
+              <Button disabled={isAuthenticating} fullWidth type="submit" variant="contained">
                 Create
               </Button>
             </Grid>
