@@ -11,10 +11,15 @@ export const Sidebar = ({ drawerWidth }) => {
     <Box component="nav" sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}>
       <Drawer
         variant="permanent"
-        open={true}
+        open
         sx={{
-          display: { xs: 'block' },
-          '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth }
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+            boxSizing: 'border-box',
+            zIndex: 1000
+          }
         }}>
         <Toolbar>
           <Typography variant="h6" noWrap>
